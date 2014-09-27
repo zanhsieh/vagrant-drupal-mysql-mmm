@@ -37,6 +37,6 @@ package { $packagelist:
 }
 
 service { 'iptables':
-  ensure => 'stopped'
+  ensure => 'stopped',
+  enable => 'false'
 }
-

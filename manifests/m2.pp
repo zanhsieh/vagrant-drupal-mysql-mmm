@@ -51,5 +51,6 @@ class { '::mysql::server':
 }
 
 service { 'iptables':
-  ensure => 'stopped'
+  ensure => 'stopped',
+  enable => 'false'
 }
