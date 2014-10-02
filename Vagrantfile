@@ -7,7 +7,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "m1" do |m1|
     m1.vm.box = "Centos6.5"
+    m1.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box"
     m1.vm.hostname = "m1"
+    # Configurate the virtual machine to use 2GB of RAM
+    # m1.vm.provider :virtualbox do |v|
+    #   v.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+    #   v.customize ["modifyvm", :id, "--memory", "2048"]
+    #   v.customize ["modifyvm", :id, "--cpus", "2"]
+    # end
     m1.vm.network :private_network, :ip => "192.168.30.101"
     m1.vm.provision :puppet do |puppet|
       puppet.manifest_file = "m1.pp"
